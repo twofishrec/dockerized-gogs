@@ -1,0 +1,48 @@
+version: '3.5'
+
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    container_name: mysql 
+    hostname: mysql 
+    volumes:
+     - mysql-data:/var/lib/mysql
+    networks: 
+     - mysqlnet
+    ports:
+     - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: supersecretpassword
+
+  adminer:
+    container_name: adminer
+    hostname: adminer
+    image: adminer
+    restart: always
+    networks: 
+     - mysqlnet
+    ports:
+     - '8080:8080'
+  gogs:
+    container_name: gogs
+    hostname: gogs
+    image: gogs/gogs
+    restart: always
+    networks: 
+     - mysqlnet
+    ports: 
+     - '3000:3000'
+     - '10022:22'
+    volumes:
+     - gogs-data:/data
+
+networks:
+  mysqlnet:
+     name: mysqlnet
+
+volumes:
+  gogs-data:  
+  mysql-data:
+  
