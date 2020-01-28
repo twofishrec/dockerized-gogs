@@ -25,5 +25,5 @@ To stop it you can simply run the following to bring it down
 
 
 Add additional configuration steps
-  -[ ] Gogs username: dsoadmin
-  -[ ] Gogs Password: password
+  - [ ] Gogs username: dsoadmin
+  - [ ] Gogs Password: password
