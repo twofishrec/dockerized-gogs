@@ -14,7 +14,7 @@ services:
     ports:
      - '3306:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: supersecretpassword
+      - MYSQL_ROOT_PASSWORD
 
   adminer:
     container_name: adminer
@@ -25,6 +25,7 @@ services:
      - mysqlnet
     ports:
      - '8080:8080'
+
   gogs:
     container_name: gogs
     hostname: gogs
